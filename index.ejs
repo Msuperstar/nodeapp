@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <%- include('menu.html') %>
+    <!--조건문-->
+    <h1>홈입니다.</h1>
+    <% if(user){%>
+    <h3>반갑습니다.<%= user%> </h3>
+    <!--원래는 user.userid였음.mysql열이름:로컬에서 로그인-->
+    <!--facebook ver: user.user.userid:유저에게 유저라는 객체에서 2가지중 userid라는 속성 -->
+    <!--로컬의 패스포트라면 :user.user-->
+    <a href="/logout ">로그아웃</a>
+    <%}else{%>
+    <h3>로그인해주세요</h3>
+    <button class = "w-100 btn btn-warning login"><b>로그인</b></button>
+    <p></p>
+    <button class = "w-100 btn btn-success signup"><b>회원가입</b></button>
+    <%}%>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $('.login').click(function(e){
+            console.log("로그인 시도");
+            location.href = "/login";
+          });
+          $('.signup').click(function(e){
+            console.log("회원가입시도");
+            location.href = "\signup";
+          })
+        })
+    </script>
+  </body>
+</html>
